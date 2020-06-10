@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	{% for post in posts %}
+	<div class="post-box">
+		<div class="post-head">
+			<div class="post-author">
+				<img class="author-profile" src="{{ post.post_author.profile.image.url }}">
+				<div class="author-name">
+					<a class="post-title-link" style="font-weight: bold;" href="#">@{{ post.post_author }}
+					</a>
+				</div>
+				<div class="post-date">{{ post.post_date|date:"F d, Y" }}</div>
+			</div>
+		</div>
+		<div class="content-box">
+			<div class="post-title">
+				<a class="post-title-link" href="{% url 'post-detail' post.id %}">{{ post.post_title }}</a>
+			</div>
+			<div class="content-space">
+				<p>
+					{{ post.post_content }}
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock content %}

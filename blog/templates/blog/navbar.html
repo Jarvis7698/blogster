@@ -1,0 +1,15 @@
+<div class="navbar">
+	<a class="logo" href="{% url 'index' %}">Blogster</a>
+	<ul class="nav">
+		<li><a class="nav-item" href="{% url 'index' %}">Home</a></li>
+		<li><a class="nav-item" href="{% url 'about' %}">About</a></li>
+		{% if user.is_authenticated %}
+			<li><a class="nav-item" href="{% url 'post-create' %}">Publish</a></li>
+			<li><a class="nav-item" style="color: yellow;" href="{% url 'profile' %}"><u>{{ user.username }}</u></a></li>
+			<li><a class="nav-item" href="{% url 'logout' %}">Logout</a></li>
+		{% else %}
+			<li><a class="nav-item" href="{% url 'login' %}">Login</a></li>
+			<li><a class="nav-item" href="{% url 'register' %}">Register</a></li>
+		{% endif %}
+	</ul>	
+</div>

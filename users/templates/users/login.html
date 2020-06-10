@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div class="reg-form-box">
+		<h1 class="reg-legend">Log Into Your Blogster Account</h1>
+		<form class="reg-form" method="POST">{% csrf_token %}
+			<fieldset class="reg-fieldset">
+				{% for field in form.visible_fields %}
+				<div class="reg-field">
+					<div class="reg-label">{{ field.label_tag }}</div>
+					<div class="reg-input">{{ field }}</div>
+				</div>
+				{% endfor %}
+				<div class="reg-field">
+					<div class="reg-label"> </div>
+					<div class="reg-input"> 
+						{% if form.errors %}
+							<div class="reg-error">
+								Please enter a correct username and password.<br/>Note that both fields may be case-sensitive.
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</fieldset>
+			<div class="btn-holder">
+				<button class="reg-submit" type="submit">
+					LOGIN
+				</button>
+			</div>
+		</form>
+		<div class="reg-already">
+			<a class="link-sign-in" href="{% url 'register' %}">
+			Don't Have A Blogster Account?</a>
+		</div>
+	</div>
+{% endblock content %}

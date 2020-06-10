@@ -1,0 +1,72 @@
+
+.profile-frame {
+	background-color: white;
+	border: solid lightgrey;
+	border-width: 1px;
+	border-radius: 2px;
+	padding: 10px;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	margin-bottom: 3vh;
+	margin-top: 2vh;
+}
+
+.profile-box {
+	border: none;
+	background-color: rgb(245,245,245);
+	border-width: 1px;
+	border-radius: 2px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile-image-box {
+	flex: 1;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	margin-top: 10px;
+}
+
+.profile-image {
+	width: 80%;
+	object-fit: cover;
+	border-radius: 50%;
+	margin: auto;
+	padding: 10px;
+	border: dashed yellow;
+	transition: transform 2s;
+}
+
+.profile-image:hover {
+	transform: rotate(360deg);
+}
+
+.profile-body {
+	flex: 1;
+	width: 80%;
+	margin: 10px;
+	margin-top: 0;
+}
+
+.profile-name {
+	transition: 0.8s;
+	width: auto;
+	padding: 5px;
+}
+
+.profile-name:hover {
+	cursor: default;
+	letter-spacing: 4px;
+}
+
+.profile-email {
+	width: auto;
+	padding: 10px;
+	padding-top: 0;
+	color: dodgerblue;
+}

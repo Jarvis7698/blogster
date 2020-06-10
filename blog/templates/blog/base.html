@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--script src='https://kit.fontawesome.com/a076d05399.js'></script-->
+
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/users.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/profile.css' %}">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+	{% if title %}
+		<title>Blog - {{ title }}</title>
+	{% else %}
+		<title>Django Blog</title>
+	{% endif %}
+
+</head>
+<body>
+	<header>
+		{% include 'blog/navbar.html' %}
+	</header>
+
+	<section class="main-page">
+		<div class="left-pane">
+			
+		</div>
+		<div class="content">
+			{% if messages %}
+				{% for message in messages %}
+				<div class="alerts-success">
+					{{ message }}
+				</div>
+				{% endfor %}
+			{% endif %}
+
+			{% block content %}
+			
+			{% endblock %}
+		</div>
+		<div class="right-pane">
+			
+		</div>
+	</section>
+
+	<footer class="common-footer">
+		<pre class="footer-text">
+Blogster Community
+Designed by @jarvis7698 | Kunal Acharya | 2020
+Watumull Institute of Electronics Engineering and Computer Technology.
+Got a feedback for us? - Contact at <a class="post-title-link" href="https://instagram.com/jarvis.7698">jarvis761998@gmail.com</a>
+		</pre>
+	</footer>
+</body>
+</html>

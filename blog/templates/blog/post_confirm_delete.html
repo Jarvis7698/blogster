@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div class="reg-form-box">
+		<form class="reg-form" method="POST">
+			{% csrf_token %}
+			<h1 class="reg-legend">
+				Are you sure you want to [Delete] the blog <br>
+				"{{ object.post_title }}"?
+			</h2>
+			<div class="btn-holder">
+				<button class="reg-submit" type="submit">
+					YES I'M SURE
+				</button>
+			</div>			
+		</form>
+		<div class="reg-already">
+			<a class="link-sign-in" href="{% url 'post-detail' object.id %}">
+			No! I've changed my mind, take me back!</a>
+		</div>
+	</div>
+{% endblock content %}

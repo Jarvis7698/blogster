@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div class="reg-form-box">
+		<h1 class="reg-legend">Register For A New Account</h1>
+		<form class="reg-form" method="POST">
+			{% csrf_token %}
+			<fieldset class="reg-fieldset">
+				{% for field in form.visible_fields %}
+					<div class="reg-field">
+						<div class="reg-label">
+							{{ field.label_tag }}
+						</div>
+						<div class="reg-input">
+							{{ field }}
+							<small class="field-info">
+								{{ field.help_text }}
+							</small>
+							{% if form.errors %}
+								{% for error in field.errors %}
+									<div class="reg-error">
+										{{ error }}
+									</div>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</fieldset>
+			<div class="btn-holder">
+				<button class="reg-submit" type="submit">
+					SIGNUP
+				</button>
+			</div>			
+		</form>
+		<div class="reg-already">
+			<a class="link-sign-in" href="{% url 'login' %}">
+			Already Have An Account?</a>
+		</div>
+	</div>
+{% endblock content %}

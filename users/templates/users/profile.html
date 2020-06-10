@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div class="profile-frame">
+		<div class="profile-box">
+			<div class="profile-image-box">
+				<img class="profile-image" src="{{ user.profile.image.url }}" alt="{{ user.username }}'s Profile Picture">
+			</div>
+			<div class="profile-body">
+				<h1 class="profile-name">{{ user.username }}</h1>
+				<p class="profile-email">{{ user.email }}</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- User Forms Section -->
+	<div class="reg-form-box">
+		<h1 class="reg-legend">Update Your Profile</h1>
+		<form class="reg-form" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="reg-fieldset">
+				{% for field in u_form.visible_fields %}
+					<div class="reg-field">
+						<div class="reg-label">
+							{{ field.label_tag }}
+						</div>
+						<div class="reg-input">
+							{{ field }}
+							<small class="field-info">
+								{{ field.help_text }}
+							</small>
+							{% if form.errors %}
+								{% for error in field.errors %}
+									<div class="reg-error">
+										{{ error }}
+									</div>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+
+				{% for field in p_form.visible_fields %}
+					<div class="reg-field">
+						<div class="reg-label">
+							{{ field.label_tag }}
+						</div>
+						<div class="reg-input">
+							{{ field }}
+							<small class="field-info">
+								{{ field.help_text }}
+							</small>
+							{% if form.errors %}
+								{% for error in field.errors %}
+									<div class="reg-error">
+										{{ error }}
+									</div>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+
+			</fieldset>
+			<div class="btn-holder">
+				<button class="reg-submit" type="submit">
+					UPDATE
+				</button>
+			</div>			
+		</form>
+		<div class="reg-already">
+			
+		</div>
+	</div>
+{% endblock content %}

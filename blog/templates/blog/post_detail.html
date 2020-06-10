@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<div class="post-box">
+		<div class="post-head">
+			<div class="post-author">
+				<img class="author-profile" src="{{ post.post_author.profile.image.url }}">
+				<div class="author-name">
+					<a class="post-title-link" style="font-weight:bold;" href="#">@{{ object.post_author }}</a>
+				</div>
+				<div class="post-date">{{ object.post_date|date:"F d, Y" }}</div>
+			</div>
+		</div>
+		<div class="content-box">
+			<div class="post-title">
+				{{ object.post_title }}
+			</div>
+			<div class="content-space">
+				<p>
+					{{ object.post_content }}
+				</p>
+			</div>
+		</div>
+		{% if object.post_author == user %}
+			<div class="post-func">
+				<a class="func-btn-edit" href="{% url 'post-update' object.id %}">Edit</a>
+				<a class="dummy" href="#"></a>
+				<a class="func-btn-del" href="{% url 'post-delete' object.id %}">Delete</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock content %}
